@@ -11,13 +11,18 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject pausePanel;
     [SerializeField] GameObject endPanel;
     [SerializeField] GameObject HUD;
-    bool paused;
+    
+    static public UIManager _uimInstance;
+    private void Start()
+    {
+        _uimInstance = this;
+    }
     private void Update()
     {
         UpdateTimer();
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (!paused)
+            if (!GameManager._gmInstance.paused)
             {
                 Pause();
             }
@@ -31,14 +36,14 @@ public class UIManager : MonoBehaviour
     public void UnPause()
     {
         pausePanel.SetActive(false);
-        paused = false;
+        GameManager._gmInstance.paused = false;
         Time.timeScale = 1;
     }
 
     private void Pause()
     {
         pausePanel.SetActive(true);
-        paused = true;
+        GameManager._gmInstance.paused = true;
         Time.timeScale = 0;
     }
 

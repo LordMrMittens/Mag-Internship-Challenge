@@ -7,9 +7,10 @@ public class GridManager : MonoBehaviour
     [SerializeField] List<GameObject> tiles = new List<GameObject>();
     GameObject[,] grid;
     int rows = 9, columns = 9;
+    
     List<GameObject> matchingTiles = new List<GameObject>();
     List<GameObject> checkedTiles = new List<GameObject>();
-
+    
     void Start()
     {
         grid = new GameObject[rows, columns];
@@ -29,7 +30,7 @@ public class GridManager : MonoBehaviour
 
     private void Update()
     {
-        if (GameManager._gmInstance.timeLeft > 0)
+        if (GameManager._gmInstance.timeLeft > 0&& !GameManager._gmInstance.paused)
         {
             if (Input.GetMouseButtonDown(0))
             {

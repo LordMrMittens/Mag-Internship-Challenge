@@ -23,7 +23,6 @@ public class TileGravityManager : MonoBehaviour
         transform.position = Vector2.Lerp(startPos, endPos, shiftTimer);
         if(transform.position == endPos)
         {
-            Debug.Log("GettingHere " + shiftTimer);
             isShifting = false;
             shiftTimer = 0;
         }
